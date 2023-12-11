@@ -1,0 +1,57 @@
+Practical - 7
+
+Aim: Design and Animate Game Character in Unity
+
+With the standard assets, let’s drag in the Ethan model (Standard Assets > Characters > ThirdPersonCharacter > Models). Then for a floor, let’s create a new cube (right click Hierarchy > 3D Object > Cube).
+ 
+If we select the model in the scene, you’ll see that it has an Animator component attached.
+ 
+●	Controller: An animation controller which lays out the animations we can player, their relations/transitions between each other and the conditions to do so.
+
+●	Avatar: The rig or skeleton that can morph our model.
+
+●	Apply Root Motion: If disabled, animations that move like a run animation will not move.
+
+●	Update Mode: How the animation frames play.
+
+●	Normal: Updates every frame.
+●	Animate Physics: Based on physics time step (50 times per second).
+●	Unscaled Time: Normal, but not tied to Time.timeScale.
+●	Culling Mode: Determines if the animations should play off-screen.
+●	Always Animate: Always animate the entire character. Object is animated even when offscreen.
+●	Cull Update Transforms: Retarget, IK and write of Transforms are disabled when renderers are not visible.
+●	Cull Completely: Animation is completely disabled when renderers are not visible.
+For the next lesson, let’s create an Animation Controller which will contain our animation state machine. In the Project panel, right click the Hierarchy > Create > Animation Controller. Call it Ethan.
+ 
+Now select the Ethan model in the scene and drag the controller into the Controller property.
+ 
+In the next lesson, we’re going to be looking at animation state machines.
+
+Part 2
+States and Transitions
+In this lesson, we’re going to be looking at and creating an animation state machine in Unity. This involves states and transitions.
+●	States: Animations that will play when they are transitioned to.
+●	Transitions: Conditions to transition from one state to another.
+Let’s now go over to Unity and open up the Animator window (Window > Animator).
+Let’s find an animation to drag into the animation controller. Search t:animationclip to find all the animation clips in the standard assets. Drag the HumanoidWalk animation into the Animator screen. It being orange, means that this is the default state. This will be played first when the object is initialized.
+ 
+Let’s now drag in the HumanoidRun clip. You’ll see that this clip isn’t orange. We can make it the default clip by right clicking it and selecting Set as Layer Default State.
+ 
+Let’s now make a transition between these two states. Select the HumanoidWalk and click Make Transition. Then click on HumanoidRun. This will create a new transition from the walk animation to the run animation. By default, this means that when the walk animation has finished playing, the run animation will play.
+ 
+If we press play, the two animations will play. When the run animation is finished, nothing will happen. We can transition that into the Exit state, so that it loops back around to the Entry state.
+ 
+A better method is to just have the run animation transition back into the walk animation.
+ 
+States
+Let’s select the humanoid walk state and have a look at the Inspector.
+ 
+●	Motion: Animation that the state will play.
+●	Speed: How fast the animation will play.
+Transitions
+Let’s select a transition and have a look at the Inspector. Transitions can allow an animation to fade into another. Here, we can modify when, how and how fast the transition takes place.
+ 
+●	Exit Time: When in the clip will we begin to transition into the next.
+●	Transition Duration: Duration of the transition.
+Let’s now restructure our controller a bit and add in an idle animation for the default one.
+ 

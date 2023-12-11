@@ -1,0 +1,90 @@
+Practical-6
+
+Aim: Create Camera Shake Effect in Unity
+
+Steps:
+1)	Open Unity Hub & Create New Project
+2)	Select 3D Core & name the project
+3)	Create &  Scale objects
+●	Right Click on Hierarchy  Window. Navigate through 3D Object > Select Spehere & Cube
+ 
+
+●	Select your properties one by one and allocate them desired position & scaling properties.
+ 
+ 
+
+●	3D Object will be displayed in Hierarchy window along with Main Camera & Directional Light.
+ 
+
+●	In the Inspector window, “Add Component” > New Script > Name it as “CameraShake”
+ 
+
+
+
+
+
+
+
+
+
+
+
+●	In the Asset section, RightClick on “CameraShake”> Show in Explorer > Click on CameraShake.cs > Open in Visual Studio Code
+
+ 
+ 
+
+●	Type the Code:
+
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CameraShake : MonoBehaviour
+{
+    private Transform cameraTransform;
+    private Vector3 originalPosition;
+    private float shakeDuration = 2.5f;
+    private float shakeIntensity = 0.5f; // Adjust as needed
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        cameraTransform = transform; // Assign the camera's transform to the variable
+        originalPosition = cameraTransform.localPosition;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Debug.Log("Shake duration: " + shakeDuration);
+        if (shakeDuration > 0)
+        {
+            cameraTransform.localPosition = originalPosition + Random.insideUnitSphere * shakeIntensity;
+            shakeDuration -= Time.deltaTime;
+        }
+        else
+        {
+            shakeDuration = 0f;
+            cameraTransform.localPosition = originalPosition;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space)) // This line should be inside the Update method
+        {
+            ShakeCamera(3.5f); // Adjust duration as needed
+        }
+    }
+
+    public void ShakeCamera(float duration)
+    {
+        Debug.Log("Shake initiated with duration: " + duration);
+        originalPosition = cameraTransform.localPosition;
+        shakeDuration = duration;
+    }
+}
+
+
+
+●	Go to game section & play the program:
+ 

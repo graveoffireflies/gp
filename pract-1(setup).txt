@@ -1,0 +1,45 @@
+Practical 1
+
+Aim: Setting up Game Programming environment (Installation of DirectX SDK). Creating Window Framework and Initializing a Direct3D Device
+
+Part 1 :
+Download DirectX SDK from the link given in the description.
+https://www.microsoft.com/en-in/download/details.aspx?id=6812 
+
+Open control panel:
+If you have Windows 64 bit then uninstall these 2 files 
+► Microsoft Visual C++ 2010 x64 Redistributable
+► Microsoft Visual C++ 2010 x86 Redistributable
+
+Install DirectX SDK 
+Check whether it is installed or not ?
+Go to Local Disk C: > Windows folder >Microsoft.Net >DirectX Mangaged code
+
+ 
+
+
+
+
+
+Part 2:
+
+Open Visual Studio 
+► Create New project
+►Add references
+
+ 
+►Browse to the DirectX Managed Code directory.
+Select these three files.
+► Microsoft.DirectX.Direct3DX.dll ; Microsoft.DirectX.Direct3D.dll;  Microsoft.DirectX.dll 
+Add these files
+.
+
+Right click on the Form1 and click View Code.Then use the below namespace
+using Microsoft.DirectX.Direct3D; 
+Click on BUILD menu then Configuration manager.
+In front of your project select Platform ► New ► Select x86 and then close
+
+Then debug...
+.
+ 
+

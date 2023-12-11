@@ -1,0 +1,95 @@
+PRACTICAL – 2
+Aim: Learn Basic Game Designing Techniques with pygame.
+1] SIMPLE PYGAME EXAMPLE
+import pygame
+pygame.init()
+screen = pygame.display.set_mode((400, 500))
+done = False
+while not done:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True
+    pygame.display.flip()
+
+ 
+
+2] PROGRAM TO CREATE A RECTANGLE
+import pygame
+pygame.init()
+screen = pygame.display.set_mode((400, 300))
+done = False
+while not done:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+       done = True
+    pygame.draw.rect(screen, (0, 125, 255), pygame.Rect(30, 30, 60, 60)
+    pygame.display.flip()
+ 
+                        
+3] Example of the key press and key release.									
+import pygame
+pygame.init()
+# sets the window title
+pygame.display.set_caption(u'Keyboard events')
+# sets the window size
+pygame.display.set_mode((400, 400))
+
+while True:
+    # gets a single event from the event queue
+    event = pygame.event.wait()
+    
+    # if the 'close' button of the window is pressed
+    if event.type == pygame.QUIT:
+        # stops the application
+        break
+    
+    # Detects the 'KEYDOWN' and 'KEYUP' events
+    if event.type in (pygame.KEYDOWN, pygame.KEYUP):
+        # gets the key name
+        key_name = pygame.key.name(event.key)
+        # converts to uppercase the key name
+        key_name = key_name.upper()
+        
+        # if any key is pressed
+        if event.type == pygame.KEYDOWN:
+            # prints on the console the key pressed
+            print(u'"{}" key pressed'.format(key_name))
+        # if any key is released
+        elif event.type == pygame.KEYUP:
+            # prints on the console the released key
+            print(u'"{}" key released'.format(key_name))                    
+
+
+
+
+
+
+
+
+
+4] Printing text
+import pygame
+pygame.init()
+screen = pygame.display.set_mode((640, 480))
+done = False
+
+# Load the fonts
+font = pygame.font.SysFont("Times new Roman", 72)
+# Render the text on a new surface
+text = font.render("Hello, Pygame", True, (158, 16, 16))
+
+while not done:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            done = True
+    
+    screen.fill((255, 255, 255))
+    # We will discuss blit() in the next topic
+    screen.blit(text, (320 - text.get_width() // 2, 240 - text.get_height() // 2))
+    
+    pygame.display.flip()
+
+
+ 
